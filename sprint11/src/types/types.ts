@@ -7,13 +7,16 @@ export type TItem = {
 	favoriteCount: number;
 }
 
-export type TProduct = {
-	id: string;
+export interface IProductInputs {
 	name: string;
 	description: string;
-	images: string[];
 	price: number;
+	images: string[];
 	tags: string[];
+}
+
+export interface IProductFull extends IProductInputs {
+	id: string;
 	favoriteCount: number;
 	createdAt: Date;
 	updatedAt: Date;
@@ -22,13 +25,9 @@ export type TProduct = {
 		nickname: string;
 	}
 	isFavorite: boolean;
-} | {
-	name: string;
-	description: string;
-	price: number;
-	images: string[];
-	tags: string[];
 }
+
+export type TProduct = IProductFull | IProductInputs;
 
 export type TArticle = {
 	id: string;
