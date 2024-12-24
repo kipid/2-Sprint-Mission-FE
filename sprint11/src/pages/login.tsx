@@ -7,6 +7,7 @@ import { useSetUser, useUser } from "@/context/UserProvider.tsx";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import instance from "@/apis/instance";
 
 const EMAIL_REGEX = /^[a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣0-9\-_.]+@[a-zA-Zㄱ-ㅎㅏ-ㅣ가-힣0-9\-_.]+\.[\w]{2,3}$/;
 const PWD_MIN_LENGTH = 6;
@@ -76,7 +77,7 @@ function LogInPage() {
 			<div className={styles.oauth}>
 				<span>간편 로그인하기</span>
 				<div className={styles.oauth_images}>
-					<Link href="https://www.google.com/"><div className={styles.oauth_img_wrapper}><Image fill src="/images/oauth-Google.png" alt="구글로 로그인하기" className={styles.img_oauth}/></div></Link>
+					<Link href={`${instance.defaults.baseURL}/account/auth/google`}><div className={styles.oauth_img_wrapper}><Image fill src="/images/oauth-Google.png" alt="구글로 로그인하기" className={styles.img_oauth}/></div></Link>
 					<Link href="https://www.kakaocorp.com/page/"><div className={styles.oauth_img_wrapper}><Image fill src="/images/oauth-Kakao.png" alt="카카오로 로그인하기" className={styles.img_oauth}/></div></Link>
 				</div>
 			</div>
