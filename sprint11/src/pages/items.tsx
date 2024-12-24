@@ -33,13 +33,13 @@ function ItemsPage() {
 	const [sort, setSort] = useState("recent");
 	const [keyword, setKeyword] = useState("");
 	// const [isLoadingItems, error, loadItemsAsync, setError] = useAsync(getProducts);
-	const { data: result0 } = useQuery({
+	const { data: result0, isLoading: isLoading0 } = useQuery({
 		queryKey: ["items", page, pageBestSize, "favorite", ""],
 		queryFn: () => getProducts({ page, pageSize: pageBestSize, sort: "favorite", keyword: "" }),
 		placeholderData: keepPreviousData,
 		staleTime: 5 * 60 * 1000,
 	});
-	const { data: result1 } = useQuery({
+	const { data: result1, isLoading: isLoading1 } = useQuery({
 		queryKey: ["items", page, pageSize, sort, keyword],
 		queryFn: () => getProducts({ page, pageSize, sort, keyword }),
 		placeholderData: keepPreviousData,
@@ -73,6 +73,10 @@ function ItemsPage() {
       setItems(result1.list);
     }
   }, [result1, pageSize]);
+
+	if (isLoading0 || isLoading1) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<main className={styles.main}>
