@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 const instance = axios.create({
-	// baseURL: `https://panda-market-api.vercel.app`,
-	baseURL: `http://localhost:3100`,
+	baseURL: `https://two-sprint-mission-be-t2e7.onrender.com`,
+	// baseURL: `http://localhost:3100`,
 	withCredentials: true,
 });
 
