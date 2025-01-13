@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
- // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TAsyncFunction = (...args: any[]) => Promise<unknown>;
 
 function useAsync(asyncFunc: TAsyncFunction) {
